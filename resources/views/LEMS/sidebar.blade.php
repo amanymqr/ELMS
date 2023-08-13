@@ -2,11 +2,12 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">ELMS</sup></div>
+    <a class="sidebar-brand    d-flex align-items-center justify-content-center"
+        href="{{ route('leave-requests.index') }}">
+        <div class="sidebar-brand-icon mx-2 ">
+            <i class="fa-solid fa-gauge-high"></i>        </div>
+        ELMS
+
     </a>
 
     <!-- Divider -->
@@ -33,14 +34,18 @@
 
     <!-- Employees Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link {{ request()->routeIs('employees.*') ? 'active' : '' }}" data-toggle="collapse" href="#collapseEmployees" aria-expanded="false" aria-controls="collapseEmployees">
+        <a class="nav-link {{ request()->routeIs('employees.*') ? 'active' : '' }}" data-toggle="collapse"
+            href="#collapseEmployees" aria-expanded="false" aria-controls="collapseEmployees">
             <i class="fa-solid fa-user-group"></i>
             <span>Employees</span>
         </a>
-        <div id="collapseEmployees" class="collapse {{ request()->routeIs('employees.*') ? 'show' : '' }}" aria-labelledby="headingEmployees" data-parent="#accordionSidebar">
+        <div id="collapseEmployees" class="collapse {{ request()->routeIs('employees.*') ? 'show' : '' }}"
+            aria-labelledby="headingEmployees" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item {{ request()->routeIs('employees.create') ? 'active' : '' }}" href="{{ route('employees.create') }}">Add New</a>
-                <a class="collapse-item {{ request()->routeIs('employees.index') ? 'active' : '' }}" href="{{ route('employees.index') }}">All Employees</a>
+                <a class="collapse-item {{ request()->routeIs('employees.create') ? 'active' : '' }}"
+                    href="{{ route('employees.create') }}">Add New</a>
+                <a class="collapse-item {{ request()->routeIs('employees.index') ? 'active' : '' }}"
+                    href="{{ route('employees.index') }}">All Employees</a>
             </div>
         </div>
     </li>
@@ -49,14 +54,18 @@
 
     <!-- Leave Request Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link " data-toggle="collapse" href="#collapseLeaveRequest" aria-expanded="false" aria-controls="collapseLeaveRequest">
+        <a class="nav-link " data-toggle="collapse" href="#collapseLeaveRequest" aria-expanded="false"
+            aria-controls="collapseLeaveRequest">
             <i class="fa-solid fa-heart"></i>
             <span>Leave Request</span>
         </a>
-        <div id="collapseLeaveRequest" class="collapse " aria-labelledby="headingLeaveRequest" data-parent="#accordionSidebar">
+        <div id="collapseLeaveRequest" class="collapse " aria-labelledby="headingLeaveRequest"
+            data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item {{ request()->routeIs('leave-types.create') ? 'active' : '' }}" href="{{ route('leave-types.create') }}">Add New</a>
-                <a class="collapse-item {{ request()->routeIs('leave-types.index') ? 'active' : '' }} " href="{{ route('leave-types.index') }}">Leave Types </a>
+                <a class="collapse-item {{ request()->routeIs('leave-types.create') ? 'active' : '' }}"
+                    href="{{ route('leave-types.create') }}">Add New</a>
+                <a class="collapse-item {{ request()->routeIs('leave-types.index') ? 'active' : '' }} "
+                    href="{{ route('leave-types.index') }}">Leave Types </a>
             </div>
         </div>
     </li>

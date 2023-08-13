@@ -10,8 +10,32 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class LeaveRequest extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','leave_type_id','start_date','end_date','reason','status'];
+    protected $fillable = ['user_id', 'leave_type_id', 'start_date', 'end_date', 'reason', 'status'];
 
+    public function scopePending($query)
+    {
+        return $query->where('status', 'pending');
+    }
+
+    public function scopeApproved($query)
+    {
+        return $query->where('status', 'approved');
+    }
+
+    public function scopeRejected($query)
+    {
+        return $query->where('status', 'rejected');
+    }
+
+    // public function isPending()
+    // {
+    //     return $this->status === 'pending';
+    // }
+
+    // public function isAnswered()
+    // {
+    //     return $this->status === 'approved' || $this->status === 'rejected';
+    // }
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -22,4 +46,3 @@ class LeaveRequest extends Model
         return $this->belongsTo(LeaveType::class);
     }
 }
-

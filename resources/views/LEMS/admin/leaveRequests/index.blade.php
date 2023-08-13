@@ -38,4 +38,6 @@
             @endforeach
         </tbody>
     </table>
+
+{{ $leaveRequests->links() }}
 @endsection

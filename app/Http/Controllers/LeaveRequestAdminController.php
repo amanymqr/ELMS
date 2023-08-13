@@ -44,4 +44,3 @@ class LeaveRequestAdminController extends Controller
         return redirect()->route('admin.leave-requests.index')->with('success', 'Leave request denied.');
     }
 }
-

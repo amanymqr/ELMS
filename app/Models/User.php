@@ -44,6 +44,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+
+
     public function leaveRequests()
     {
         return $this->hasMany(LeaveRequest::class);
