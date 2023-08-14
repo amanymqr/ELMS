@@ -27,6 +27,9 @@ class LeaveRequest extends Model
         return $query->where('status', 'rejected');
     }
 
+
+
+
     // public function isPending()
     // {
     //     return $this->status === 'pending';

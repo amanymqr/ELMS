@@ -1,32 +1,25 @@
-<!doctype html>
-<html lang="en">
+@extends('LEMS.employee.master')
+@section('title', 'Edit Leave Request')
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('style')
+    h1{
+    color: #53455c ;
+    }
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Edit Leave Request</title>
-</head>
 
-<body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <!-- ... Your navigation content ... -->
-    </nav>
 
-    <div class="container">
-        <h1>Edit Leave Request</h1>
+@endsection
+@section('content')
+    <div class="container my-4">
+        <h1 class="text-center mb-3">Edit Leave Request</h1>
         @include('LEMS.flash_erroe')
         @include('LEMS.flash_action')
         <form action="{{ route('leave-requests.update', $leaveRequest->id) }}" method="POST">
             @csrf
             @method('PUT')
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="leave_type_id">Leave Type</label>
                 <select name="leave_type_id" id="leave_type_id"
                     class="form-control @error('leave_type_id') is-invalid @enderror">
@@ -42,7 +35,7 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="start_date">Start Date</label>
                 <input type="date" name="start_date" id="start_date"
                     class="form-control @error('start_date') is-invalid @enderror"
@@ -51,7 +44,8 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="form-group">
+
+            <div class="form-group mb-3">
                 <label for="end_date">End Date</label>
                 <input type="date" name="end_date" id="end_date"
                     class="form-control @error('end_date') is-invalid @enderror"
@@ -61,9 +55,8 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn w-100 text-white rounded-pill py-2 submit-btn"
+                style="background-color: #53455c">Update Request</button>
         </form>
     </div>
-</body>
-
-</html>
+@endsection

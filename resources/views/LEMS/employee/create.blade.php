@@ -14,13 +14,13 @@
     <div class="container">
         <div class="row align-items-center justify-content-around">
             <div class="col-md-5">
-                <div class="mb-3 ">
+                <div>
                     <h3> Employee Leave </h3>
                     <h3>Managment System</h3>
                 </div>
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
+                {{--  <p>
+                    apply leave request .
+                </p>  --}}
 
                 {{--  @include('LEMS.flash_erroe')  --}}
                 @include('LEMS.flash_action')

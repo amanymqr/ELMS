@@ -9,7 +9,7 @@ class LeaveRequestAdminController extends Controller
 {
     public function index()
     {
-        $leaveRequests = LeaveRequest::with('user', 'leaveType')->orderBy('id', 'DESC')->paginate(10);
+        $leaveRequests = LeaveRequest::with('user', 'leaveType')->orderBy('id', 'DESC')->paginate(6);
         return view('LEMS.admin.leaveRequests.index', compact('leaveRequests'));
     }
 

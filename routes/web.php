@@ -21,11 +21,11 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
 
     Route::middleware('admin')->prefix('admin')->group(function () {
+
+        //Admin Routs-dashboard-
         Route::get('/', [AdminController::class, 'index'])->name('admin.index');
         Route::resource('employees', EmployeeController::class);
         Route::resource('leave-types', LeaveTypeController::class);
-
-
         Route::get('leave-requests', [LeaveRequestAdminController::class, 'index'])->name('admin.leave-requests.index');
         Route::get('leave-requests/{id}/approve', [LeaveRequestAdminController::class, 'approve'])->name('leave-requests.approve');
         Route::get('leave-requests/{id}/deny', [LeaveRequestAdminController::class, 'deny'])->name('leave-requests.deny');
@@ -34,9 +34,9 @@ Route::middleware('auth')->group(function () {
     });
 
 
-    // Route::middleware('employee' )->group(function () {
-        Route::resource('leave-requests', LeaveRequestController::class);
-    // });
+    //Admin employee-outside website-
+    Route::resource('leave-requests', LeaveRequestController::class);
+
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
