@@ -26,13 +26,17 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('admin.index');
         Route::resource('employees', EmployeeController::class);
         Route::resource('leave-types', LeaveTypeController::class);
-        Route::get('leave-requests', [LeaveRequestAdminController::class, 'index'])->name('admin.leave-requests.index');
-        Route::get('leave-requests/{id}/approve', [LeaveRequestAdminController::class, 'approve'])->name('leave-requests.approve');
-        Route::get('leave-requests/{id}/deny', [LeaveRequestAdminController::class, 'deny'])->name('leave-requests.deny');
-        Route::post('leave-requests/{id}/approve', [LeaveRequestAdminController::class, 'storeApproval'])->name('leave-requests.approve.store');
-        Route::post('leave-requests/{id}/deny', [LeaveRequestAdminController::class, 'storeDenial'])->name('leave-requests.deny.store');
+        Route::get('leave-requests', [LeaveRequestAdminController::class, 'index'])
+            ->name('admin.leave-requests.index');
+        Route::get('leave-requests/{id}/approve', [LeaveRequestAdminController::class, 'approve'])
+            ->name('leave-requests.approve');
+        Route::get('leave-requests/{id}/deny', [LeaveRequestAdminController::class, 'deny'])
+            ->name('leave-requests.deny');
+        Route::post('leave-requests/{id}/approve', [LeaveRequestAdminController::class, 'storeApproval'])
+            ->name('leave-requests.approve.store');
+        Route::post('leave-requests/{id}/deny', [LeaveRequestAdminController::class, 'storeDenial'])
+            ->name('leave-requests.deny.store');
     });
-
 
     //Admin employee-outside website-
     Route::resource('leave-requests', LeaveRequestController::class);

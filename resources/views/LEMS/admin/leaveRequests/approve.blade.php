@@ -1,4 +1,4 @@
-@extends('LEMS.master')
+{{--  @extends('LEMS.master')
 @section('title', 'approve Requests')
 
 @section('content')
@@ -8,4 +8,4 @@
     @csrf
     <button type="submit" class="btn btn-success">Approve</button>
 </form>
-@endsection
+@endsection  --}}

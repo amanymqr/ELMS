@@ -12,6 +12,6 @@
         <textarea name="reason" id="reason" class="form-control" rows="4"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-danger">Deny</button>
+    <button type="submit" class="btn btn-outline-danger">Reject</button>
 </form>
 @endsection

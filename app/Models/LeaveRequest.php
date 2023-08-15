@@ -29,7 +29,6 @@ class LeaveRequest extends Model
 
 
 
-
     // public function isPending()
     // {
     //     return $this->status === 'pending';

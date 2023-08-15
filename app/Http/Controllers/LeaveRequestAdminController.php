@@ -14,12 +14,6 @@ class LeaveRequestAdminController extends Controller
     }
 
 
-    public function approve($id)
-    {
-        $leaveRequest = LeaveRequest::findOrFail($id);
-        return view('LEMS.admin.leaveRequests..approve', compact('leaveRequest'));
-    }
-
     public function deny($id)
     {
         $leaveRequest = LeaveRequest::findOrFail($id);

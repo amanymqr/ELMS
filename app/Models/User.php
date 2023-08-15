@@ -44,6 +44,16 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function scopeSearchByName($query, $search)
+    {
+        return $query->where('name', 'like', '%' . $search . '%');
+    }
+
+
+    // public function scopeCurrentUser($query)
+    // {
+    //     return $query->where('user_id', auth()->id());
+    // }
 
 
     public function leaveRequests()

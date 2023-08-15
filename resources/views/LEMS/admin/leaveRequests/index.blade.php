@@ -1,8 +1,22 @@
+<?php
+function getStatusColor($status)
+{
+    switch ($status) {
+        case 'approved':
+            return 'green';
+        case 'rejected':
+            return 'red';
+        default:
+            return 'orange';
+    }
+}
+?>
+
 @extends('LEMS.master')
 @section('title', 'Leave Requests')
 
 @section('content')
-    <h1>Leave Requests</h1>
+    <h3 class="text-center my-4  fw-4"> Employee Leave Requests</h3>
     <table class="table">
         <thead>
             <tr>
@@ -23,21 +37,26 @@
                     <td>{{ $leaveRequest->leaveType->title }}</td>
                     <td>{{ $leaveRequest->start_date }}</td>
                     <td>{{ $leaveRequest->end_date }}</td>
-                    <td>{{ ucfirst($leaveRequest->status) }}</td>
+                    <td style="color: {{ getStatusColor($leaveRequest->status) }}">{{ ucFirst($leaveRequest->status) }}</td>
                     <td>
                         @if ($leaveRequest->status === 'pending')
-                            <a href="{{ route('leave-requests.approve', $leaveRequest->id) }}"
-                                class="btn btn-sm  btn-success">Approve</a>
-                            <a href="{{ route('leave-requests.deny', $leaveRequest->id) }}"
-                                class="btn  btn-sm btn-danger">rejected</a>
+                            <div class="d-flex">
+                                <form action="{{ route('leave-requests.approve.store', $leaveRequest->id) }}" method="POST" class="mx-1">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-outline-success"><i
+                                            class="fa-solid fa-check-double"></i></button>
+                                </form>
+                                <a href="{{ route('leave-requests.deny', $leaveRequest->id) }}"
+                                    class="btn  btn-sm btn-outline-danger"><i class="fa-solid fa-xmark"></i></a>
+                            </div>
                         @elseif ($leaveRequest->status === 'approved' || $leaveRequest->status === 'rejected')
                             Answered
                         @endif
                     </td>
-                    </tr>
+                </tr>
             @endforeach
         </tbody>
     </table>
 
-{{ $leaveRequests->links() }}
+    {{ $leaveRequests->links() }}
 @endsection

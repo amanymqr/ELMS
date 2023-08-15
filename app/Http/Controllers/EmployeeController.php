@@ -15,9 +15,18 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = User::orderByDesc('id')->paginate(8);
+        if (request()->search) {
+            $employees = User::searchByName(request()->search)
+                ->orderByDesc('id')
+                ->paginate(8);
+        } else {
+            $employees = User::orderByDesc('id')
+                ->paginate(8);
+        }
+        // $employees = User::orderByDesc('id')->paginate(8);
         return view('LEMS.admin.employee.index', compact('employees'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -101,7 +110,7 @@ class EmployeeController extends Controller
         $employees = User::findOrFail($id);
         $employees->destroy($id);
         return redirect()->route('employees.index')
-        ->with('msg', 'Employee Deleted Successfully')
-        ->with('type', 'danger');
+            ->with('msg', 'Employee Deleted Successfully')
+            ->with('type', 'danger');
     }
 }
